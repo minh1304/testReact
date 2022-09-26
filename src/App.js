@@ -4,19 +4,21 @@ import {useState} from 'react'
 
 function App() {
 
-  const order = [100,200,300]
-  const [counter, setCounter] = useState(() => {
-    const total = order.reduce((total,curr) =>total + curr )
-    return  total
+  const [info, setInfo] = useState({
+    name: "Minh",
+    age: 21,
   });
-  const handleIncrease = () => {
-    setCounter(counter+1)
+  const handleUpdate = () => {
+    setInfo(prev => ({
+      ...prev,
+      id: 19521858
+    }))
 
   }
   return (
     <div className="App" style={{padding:20}}>
-      <h1>{counter}</h1>
-      <button onClick={handleIncrease}>Increase</button>
+      <h1>{JSON.stringify(info)}</h1>
+      <button onClick={handleUpdate}>Update</button>
     </div>
     
   );
