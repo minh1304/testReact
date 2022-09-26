@@ -3,25 +3,29 @@ import logo from './logo.svg';
 import {useState} from 'react'
 
 function App() {
-
-  const [info, setInfo] = useState({
-    name: "Minh",
-    age: 21,
-  });
-  const handleUpdate = () => {
-    setInfo(prev => ({
-      ...prev,
-      id: 19521858
-    }))
+  const gifts = [
+    'CPU i9',
+    'RAM 32GB',
+    'RGB keyboard',
+    'game', 
+    'sbtc',
+    'minh',
+    'anh',
+  ]
+  const [gift, setGift] = useState();
+  const randomGift = () =>{
+    const index = Math.floor(Math.random() * gifts.length);
+    setGift(gifts[index]);
 
   }
   return (
-    <div className="App" style={{padding:20}}>
-      <h1>{JSON.stringify(info)}</h1>
-      <button onClick={handleUpdate}>Update</button>
-    </div>
-    
-  );
-}
+    <div className='App' style={{padding: 20}}>
+      <h1>{gift || "Chưa có phần thưởng"}</h1>
+      <button onClick={randomGift}>Lấy thưởng</button>
 
+    </div>
+
+  )
+
+  }
 export default App;
