@@ -3,7 +3,12 @@ import logo from './logo.svg';
 import {useState} from 'react'
 
 function App() {
-  const [counter, setCounter] = useState(1);
+
+  const order = [100,200,300]
+  const [counter, setCounter] = useState(() => {
+    const total = order.reduce((total,curr) =>total + curr )
+    return  total
+  });
   const handleIncrease = () => {
     setCounter(counter+1)
 
