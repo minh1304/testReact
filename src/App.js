@@ -20,7 +20,21 @@ const courses = [
 function App() {
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
-  const [checked,setChecked] = useState(1)
+  const [checked,setChecked] = useState([])
+  const handelCheck = (id) => {
+    setChecked(prev => {
+      const isChecked = checked.includes(id)
+      if(isChecked) {
+        //uncheck
+        return checked.filter(item => item!==id)
+        
+      }else{ //check
+        return [...prev,id]
+      }
+
+    } 
+    )
+  }
 
   const handelSubmit = () => {
     //Call API  
@@ -46,9 +60,9 @@ function App() {
       {courses.map(course => (
         <div key={course.id}>
           <input
-            type="radio" 
-            checked ={checked === course.id}
-            onChange={() => setChecked(course.id)}>
+            type="checkbox" 
+            checked ={checked.includes(course.id)}
+            onChange={() => handelCheck(course.id)}>
           </input> 
           {course.name}
         </div>
