@@ -3,29 +3,28 @@ import logo from './logo.svg';
 import {useState} from 'react'
 
 function App() {
-  const gifts = [
-    'CPU i9',
-    'RAM 32GB',
-    'RGB keyboard',
-    'game', 
-    'sbtc',
-    'minh',
-    'anh',
-  ]
-  const [gift, setGift] = useState();
-  const randomGift = () =>{
-    const index = Math.floor(Math.random() * gifts.length);
-    setGift(gifts[index]);
-
-  }
+  const [name,setName] = useState('')
+  const [email,setEmail] = useState('')
+  const handelSubmit = () => {
+    //Call API  
+    console.log({
+      name, 
+      email
+    });
+  } 
   return (
-    <div className='App' style={{padding: 20}}>
-      <h1>{gift || "Chưa có phần thưởng"}</h1>
-      <button onClick={randomGift}>Lấy thưởng</button>
-
+    <div style={{padding:32}}>
+      <input 
+        value={name}
+        onChange={e => setName(e.target.value)}
+      />
+      <br></br>
+      <input 
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+      />
+      <button onClick={handelSubmit}>Change</button> 
     </div>
-
   )
-
-  }
+}
 export default App;
