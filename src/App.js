@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 // import './App.css';
-import {useState} from 'react'
-
+import {useEffect} from 'react'
+import Content from './Content';
 
 
 
@@ -81,38 +81,43 @@ import {useState} from 'react'
 function App()
 {
 
-  const [job,setJob] = useState('')
-  const [jobs,setJobs] = useState( () => {
-    //json là chuỗi nên cần .parse để chuyển thành mảng mới đưa đc vào useSta
-    const storageJob = JSON.parse(localStorage.getItem('jobs'))
-    console.log(storageJob);
+  // const [job,setJob] = useState('')
+  // const [jobs,setJobs] = useState( () => {
+  //   //json là chuỗi nên cần .parse để chuyển thành mảng mới đưa đc vào useSta
+  //   const storageJob = JSON.parse(localStorage.getItem('jobs'))
+  //   console.log(storageJob);
 
-    //Nếu chưa có trong storage thì lấy mảng trống
-    return storageJob ?? []
-  })
-  const handelSubmit = () => {
-    setJobs(prev => {
-      const newJob =  [...prev, job]
-      //Lưu vào local storage
-      const jsonJob = JSON.stringify(newJob)
-      localStorage.setItem('jobs',jsonJob)
-      return newJob
-    })
-    setJob('')
+  //   //Nếu chưa có trong storage thì lấy mảng trống
+  //   return storageJob ?? []
+  // })
+  // const handelSubmit = () => {
+  //   setJobs(prev => {
+  //     const newJob =  [...prev, job]
+  //     //Lưu vào local storage
+  //     const jsonJob = JSON.stringify(newJob)
+  //     localStorage.setItem('jobs',jsonJob)
+  //     return newJob
+  //   })
+  //   setJob('')
 
-  }
+  // }
+  // return (
+  //   <div style={{padding: 32}}>
+  //     <input value={job} 
+  //       onChange = {e =>setJob(e.target.value)}
+  //     />
+  //     <button onClick={handelSubmit}>Add</button>
+  //     <ul>
+  //       {jobs.map( (job,index)=> (
+  //         <li key={index}> {job}</li>
+  //       ))}
+  //     </ul>
+
+  //   </div>
+  // )
   return (
-    <div style={{padding: 32}}>
-      <input value={job} 
-        onChange = {e =>setJob(e.target.value)}
-      />
-      <button onClick={handelSubmit}>Add</button>
-      <ul>
-        {jobs.map( (job,index)=> (
-          <li key={index}> {job}</li>
-        ))}
-      </ul>
-
+    <div>
+      <Content />
     </div>
   )
 }
