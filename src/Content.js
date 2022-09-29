@@ -1,6 +1,16 @@
+import {useEffect,useState} from 'react'
 function Content() {
+    const [title, setTitle] =useState('')
+    useEffect(()=>{
+        document.title = title
+    })
     return (
-        <h1>Ahihi</h1>
+        <div>
+            <input 
+                value={title}
+                onChange={e=>setTitle(e.target.value)}
+            />
+        </div>
     )
 
 }
