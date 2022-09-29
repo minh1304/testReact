@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 // import './App.css';
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import Content from './Content';
 
 
@@ -115,9 +115,11 @@ function App()
 
   //   </div>
   // )
+  const[show,setShow] = useState(false)
   return (
     <div>
-      <Content />
+      <button onClick={() => setShow(!show)}>Toggle</button>
+      {show && <Content />}
     </div>
   )
 }
