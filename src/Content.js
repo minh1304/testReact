@@ -3,7 +3,12 @@ import React, {useRef,useEffect,useState} from 'react'
 
 function Content() {
     const [count, setCount] = useState(60)
-    let timerId = useRef()
+    const timerId = useRef()
+    const prevCount = useRef()
+    useEffect(() => {
+        prevCount.current = count
+
+    }, [count])
     const handleStart = () => {
         timerId.current = setInterval(() => {
             setCount(preCount => preCount -1)
@@ -15,6 +20,7 @@ function Content() {
         console.log('Stop ->', timerId.current);
 
     }
+    console.log(count, prevCount.current);
     return (
         <div style={{padding: 20}}>
             <h1>{count}</h1>
