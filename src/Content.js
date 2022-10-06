@@ -1,51 +1,26 @@
-import React, {useEffect,useState} from 'react'
-const lessons = [
-    {
-        id: 1,
-        name: 'React JS là gì? tại sao nên học?'
-    },
-    {
-        id: 2,
-        name: 'SPA/MPA là gì?'
-    },
-    {
-        id: 3,
-        name: 'Arrow function'
-    }
-]
+import React, {useLayoutEffect,useEffect,useState} from 'react'
+
 
 function Content() {
-    const [lessonID, setLessonID] = useState(1)
-    useEffect(()=> {
-        const handleComment = ({detail}) => {
-            console.log(detail);
-        } 
-        window.addEventListener(`lesson-${lessonID}`, handleComment)
-        return () => {
-            window.removeEventListener(`lesson-${lessonID}`, handleComment)
-        }
-    }, [lessonID])
-    return (
-        <div>
-            <ul>
-                {lessons.map(lesson => (
-                    <li
-                        key={lesson.id}
-                        style={{
-                            color: lessonID === lesson.id?
-                                'red' : 
-                                '#333',
-                            cursor: 'pointer'
+  const [count, setCount] = useState(0)
+  const handleRun = () => {
+    setCount(count+1)
+  }
+  useEffect(() =>{
+    if(count>3)
+        setCount(0)
 
-                        }}
-                        onClick= {()=>setLessonID(lesson.id)}
-                    >
-                        {lesson.name}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
+  }, [count])
+  return (
+    <div>
+        <h1>{count}</h1>
+        <button
+            onClick={handleRun}
+        >
+            Run
+        </button>
+    </div>
+  )
 
 }
 export default Content
