@@ -16,6 +16,15 @@ const lessons = [
 
 function Content() {
     const [lessonID, setLessonID] = useState(1)
+    useEffect(()=> {
+        const handleComment = ({detail}) => {
+            console.log(detail);
+        } 
+        window.addEventListener(`lesson-${lessonID}`, handleComment)
+        return () => {
+            window.removeEventListener(`lesson-${lessonID}`, handleComment)
+        }
+    }, [lessonID])
     return (
         <div>
             <ul>
