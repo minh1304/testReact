@@ -6,7 +6,7 @@ function Content() {
   const handleRun = () => {
     setCount(count+1)
   }
-  useEffect(() =>{
+  useLayoutEffect(() =>{
     if(count>3)
         setCount(0)
 
