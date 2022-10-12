@@ -1,27 +1,13 @@
-import { useStore, actions } from "./store";
+import Button from './components/Button'
+import GlobalStyles from './components/GlobalStyles'
 function App() {
-  const [state,dispatch] = useStore()
-  const {todos, todoInput} = state 
-  const handleAdd= () =>{
-     dispatch(actions.addToDo(todoInput))
-  }
-  console.log(todos);
- return (
-  <div>
-    <input 
-      value={todoInput}
-      placeholder='Enter todo...'
-      onChange={e => {
-        dispatch(actions.setToDoInPut(e.target.value))
-      }}
-    />
-    <button onClick={handleAdd}>Add</button>
-    {todos.map((todo,index)=>(
-      <li key={index}>
-        {todo}
-      </li>
-    ))}
-  </div>
- )
+  return (
+    <div style={{padding: '10px 32px'}}>
+      <GlobalStyles>
+        <Button primary/>
+        <Button />
+      </GlobalStyles>
+    </div>
+  )
 }
 export default App
