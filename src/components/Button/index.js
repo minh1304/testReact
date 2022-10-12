@@ -1,8 +1,9 @@
 import clsx from 'clsx'
-import styles from './Button.module.css'
-function Button({primary}) {
+import styles from './Button.module.scss'
+function Button({primary, disabled}) {
     const classes = clsx(styles.btn, {
         [styles.primary]: primary,
+        [styles.disabled]: disabled
 
     }) 
     return (

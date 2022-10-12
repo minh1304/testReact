@@ -6,6 +6,7 @@ function App() {
       <GlobalStyles>
         <Button primary/>
         <Button />
+        <Button primary disabled/>
       </GlobalStyles>
     </div>
   )

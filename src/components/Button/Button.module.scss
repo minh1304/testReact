@@ -3,8 +3,19 @@
     color: black;
     border: 1px solid #ccc;
     border-radius: 5px;
+    
+    &:hover{
+        cursor: pointer;
+        opacity: 0.9;
+
+    }
 }
 .primary {
     color: #fff;
     background-color: #007bfe;
+}
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+
 }
